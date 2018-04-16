@@ -154,10 +154,10 @@ while not done:
 				move()
 				print("Click Key_UP, ruch w strone: ", direction)
  
-    # Set the screen background
+    # Tlo
     screen.fill(BLACK)
  
-    # Draw the grid
+    # Grid
     for row in range(10):
         for column in range(10):
             color = WHITE
