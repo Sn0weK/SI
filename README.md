@@ -6,3 +6,7 @@ magazynu. Agent podejmuje decyzję o tym gdzie umieścić dany przedmiot na pods
 Gerard Smętek
 
 Wojciech Kamiński
+
+Łukasz Nojman
+
+Sebastian Ciuk
