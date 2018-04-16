@@ -47,7 +47,7 @@ node[0].append(positionx)
 node[0].append(positiony)
 node[0].append(direction)
 
-#nextstep
+#nextstep - nastepny krok
 node = []
 nodeaddr=0
 node.append([])
@@ -65,7 +65,7 @@ def goalstate(x,y):
 		return True
 	return False
 
-# Initialize pygame
+# Start
 pygame.init()
  
 # Wielkosc okna
@@ -184,12 +184,11 @@ while not done:
 			textsurface = myfont.render(str(weigth[row][column]), False, (0, 0, 0))
 			screen.blit(textsurface,((column*55)+10,(row*55)+5))
  
-    # Limit to 60 frames per second
+    # Limit 60 FPS
     clock.tick(60)
  
     # Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
 
-# Be IDLE friendly. If you forget this line, the program will 'hang'
-# on exit.
+# MUST
 pygame.quit()
