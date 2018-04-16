@@ -4,7 +4,7 @@ import pygame
 from random import randint
 from Queue import PriorityQueue
 
-# Kolory def
+# Kolory - definicja
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
@@ -29,8 +29,7 @@ for row in range(10):
     weigth.append([])
     for column in range(10):
         grid[row].append(0)  # Append a cell
-        weigth[row].append(randint(0,9))
-        
+        weigth[row].append(randint(0,9))       
 
 # Set row 0, cell 0 to one. (Remember rows and
 # column numbers start at zero.)
@@ -140,7 +139,7 @@ while not done:
 					direction = "W"
 				elif direction == "W":
 					direction = "S"
-				print("Click Key_LEFT, Kierunek: ", direction)
+				print("Click Key_LEFT, obrano kierunek: ", direction)
 			if event.key == pygame.K_RIGHT:
 				if direction == "S":
 					direction = "W"
@@ -150,10 +149,10 @@ while not done:
 					direction = "E"
 				elif direction == "E":
 					direction = "S"
-				print("Click Key_RIGHT, Kierunek: ", direction)
+				print("Click Key_RIGHT, obrano kierunek: ", direction)
 			if event.key == pygame.K_UP:
 				move()
-				print("Click Key_UP, Ruch w strone: ", direction)
+				print("Click Key_UP, ruch w strone: ", direction)
  
     # Set the screen background
     screen.fill(BLACK)
