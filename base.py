@@ -116,20 +116,20 @@ def move():
 
 # -------- Glowna czesc programu - loop -----------
 while not done:
-    for event in pygame.event.get():  # User did something
-        if event.type == pygame.QUIT:  # If user clicked close
-            done = True  # Flag that we are done so we exit this loop
+    for event in pygame.event.get():  # Przechwyt zdarzen
+        if event.type == pygame.QUIT:  # Def zamkniecia
+            done = True
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if goalx==None:
-				# User clicks the mouse. Get the position
+				# Pobieranie koordynatow
 				pos = pygame.mouse.get_pos()
 				# Change the x/y screen coordinates to grid coordinates
 				goalx = pos[0] // (WIDTH + MARGIN)
 				goaly = pos[1] // (HEIGHT + MARGIN)
-				# Set that location to one
+				# Zapis
 				grid[goaly][goalx] = 2
 				print("Click ", pos, "Koordynaty: ", row, column)
-        elif event.type == pygame.KEYDOWN:
+        elif event.type == pygame.KEYDOWN: #Strzalki - def akcji
 			if event.key == pygame.K_LEFT:
 				if direction == "S":
 					direction = "E"
