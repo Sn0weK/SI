@@ -16,4 +16,4 @@ Y=[1,0,1,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
 dt = DecisionTreeClassifier(min_samples_split=20, random_state=99)
 dt.fit(X, Y)
 
-tree.export_graphviz(dt,out_file='tree.dot')
+tree.export_graphviz(dt,out_file='tree_dec.dot')
