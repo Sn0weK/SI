@@ -1,16 +1,3 @@
- 
- 
- 
- 
-
- 
- 
- 
-
- 
- 
-
- 
 var canvas = null;
  
 var ctx = null;
