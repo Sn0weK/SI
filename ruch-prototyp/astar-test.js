@@ -88,11 +88,12 @@ while (currentPath.length == 0)
 		if (world[pathStart[0]][pathStart[1]] == 0)
 		currentPath = findPath(world,pathStart,pathEnd);
 	}
+	
 	redraw();
 
 }
 
-function redraw()
+async function redraw()
 {
 	if (!spritesheetLoaded) return;
 
@@ -144,12 +145,30 @@ function redraw()
 		}
 
 		ctx.drawImage(spritesheet,
-		spriteNum*tileWidth, 0,
-		tileWidth, tileHeight,
-		currentPath[rp][0]*tileWidth,
-		currentPath[rp][1]*tileHeight,
-		tileWidth, tileHeight);
-	}		
+			spriteNum*tileWidth, 0,
+			tileWidth, tileHeight,
+			currentPath[rp][0]*tileWidth,
+			currentPath[rp][1]*tileHeight,
+			tileWidth, tileHeight);
+		await sleep(100);
+		if(rp != 0 && rp != currentPath.length-1)
+		{
+			ctx.drawImage(spritesheet,
+				spriteNum*tileWidth, 0,
+				tileWidth, tileHeight,
+				currentPath[rp][0]*tileWidth,
+				currentPath[rp][1]*tileHeight,
+				tileWidth, tileHeight);
+			spriteNum = 0;
+			ctx.drawImage(spritesheet,
+				spriteNum*tileWidth, 0,
+				tileWidth, tileHeight,
+				currentPath[rp][0]*tileWidth,
+				currentPath[rp][1]*tileHeight,
+				tileWidth, tileHeight);
+		}
+	}	
+	console.log(world);	
 }
 
  
@@ -230,22 +249,10 @@ function findPath(world, pathStart, pathEnd)
 
 	function ManhattanDistance(Point, Goal)
 	{	 
+		abs(Point.x - Goal.x) + abs(Point.y - Goal.y)
 		return abs(Point.x - Goal.x) + abs(Point.y - Goal.y);
 	}
 
-	function DiagonalDistance(Point, Goal)
-	{	 
-		return max(abs(Point.x - Goal.x), abs(Point.y - Goal.y));
-	}
-
-	function EuclideanDistance(Point, Goal)
-	{	 
-		 
-		 
-		return sqrt(pow(Point.x - Goal.x, 2) + pow(Point.y - Goal.y, 2));
-	}
-
-	  
 	function Neighbours(x, y)
 	{
 		var	N = y - 1,
@@ -271,9 +278,10 @@ function findPath(world, pathStart, pathEnd)
 
 	function canWalkHere(x, y)
 	{
+		console.log(world[x][y]);
 		return ((world[x] != null) &&
 			(world[x][y] != null) &&
-			(world[x][y] <= maxWalkableTileNum) && (world[x][y] != 4));
+			(world[x][y] <= maxWalkableTileNum));
 	};
 
 	function Node(Parent, Point)
@@ -367,11 +375,12 @@ function findPath(world, pathStart, pathEnd)
 		return result;
 	}
 
-	 
-	 
-	 
 	return calculatePath();
 
 }  
 
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+}
 //funckja nastepnika, koszt zwariantowane, ciag akcji, kolejka priorytetowa do odwiedzenia stanow.
+//czytanie kodow, 
